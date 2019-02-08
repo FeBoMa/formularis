@@ -1,0 +1,6 @@
+{
+    "name": "PR_JAVASCRIPT", "version": "1.0.0", "keywords": [
+        "util", "functional", "server", "client", "browser"
+    ], "author": "David", "contributors": [
+    ], "dependencies": {}
+}
