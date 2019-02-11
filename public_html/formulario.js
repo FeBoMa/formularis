@@ -6,13 +6,13 @@
 var numForm = 0;
 
 var nombreForm=document.getElementById("nombreForm");
-
+var contenido = document.getElementById("contenido");
 
 
 function genera_formulario() {
 
-    formulario = document.createElement('FORM');
-    formulario.name = nombreForm.value;
+    var formulario = document.createElement('FORM');
+    formulario.id = nombreForm.value;
     formulario.method = 'POST';
 
     my_tb = document.createElement('INPUT');
@@ -27,17 +27,17 @@ function genera_formulario() {
 
 
     formulario.appendChild(my_tb);
-    document.body.appendChild(formulario);
-
+    
+    //document.body.appendChild(formulario);
+    contenido.appendChild(formulario);
     numForm++;
-
 }
 
 function borrar_formulario() {
     
-    alert(document.getElementById("nombreForm").value);
-    $("#".document.getElementById("nombreForm").value).remove();
-   // document.getElementsByName(document.getElementById("nombreForm").value).remove();
-
+    //alert(document.getElementById("nombreForm").value);
+    //document.getElementsById(document.getElementById("nombreForm").value).remove();
+    var item = document.getElementById(document.getElementById("nombreForm").value);
+    contenido.removeChild(item);
 }
    
