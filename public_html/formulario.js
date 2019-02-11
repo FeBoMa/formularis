@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var numForm=0;
+var numForm = 0;
+
+var nombreForm=document.getElementById("nombreForm");
+
+
 
 function genera_formulario() {
 
     formulario = document.createElement('FORM');
-    formulario.name = 'myForm'+numForm;
+    formulario.name = nombreForm.value;
     formulario.method = 'POST';
 
     my_tb = document.createElement('INPUT');
@@ -25,10 +29,15 @@ function genera_formulario() {
     formulario.appendChild(my_tb);
     document.body.appendChild(formulario);
 
-   numForm++;
+    numForm++;
 
+}
 
-
+function borrar_formulario() {
+    
+    alert(document.getElementById("nombreForm").value);
+    $("#".document.getElementById("nombreForm").value).remove();
+   // document.getElementsByName(document.getElementById("nombreForm").value).remove();
 
 }
    
