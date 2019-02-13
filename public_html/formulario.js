@@ -12,6 +12,7 @@ var contenido = document.getElementById("contenido");
 
 function genera_formulario() {
 
+    var idFormActual=document.getElementById("nombreForm").value;
     var formulario = document.createElement('FORM');
     formulario.id = nombreForm.value;
     formulario.method = 'POST';
@@ -21,12 +22,29 @@ function genera_formulario() {
     formulario.style.height = "400px";
     formulario.style.background = "red";
 
+    var btnInput = document.createElement('INPUT');
 
-    //document.body.appendChild(formulario);
+    btnInput.type = 'button';
+    btnInput.name = 'añadirInput';
+    btnInput.id = 'input';
+
+    btnInput.value = "Añadir Input";
+
+    btnInput.onclick = function (e) {
+        
+       
+        var etiquetaInput = document.createElement('INPUT');
+        etiquetaInput.type = 'TEXT';
+        
+        var item = document.getElementById(idFormActual);
+        item.appendChild(etiquetaInput);
+    }
+
+
+
+    formulario.appendChild(btnInput);
     contenido.appendChild(formulario);
     numForm++;
-
-
 }
 
 function borrar_formulario() {
@@ -42,7 +60,7 @@ function anadir_input() {
     var my_tb = document.createElement('INPUT');
     my_tb.type = 'TEXT';
     my_tb.name = 'myInput';
-    my_tb.id=numInput;
+    my_tb.id = numInput;
     numInput++;
 
     var item = document.getElementById(document.getElementById("nombreForm").value);
