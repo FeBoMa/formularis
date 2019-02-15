@@ -12,13 +12,37 @@ and open the template in the editor.
         <script src="jquery-3.3.1.min.js"></script>
         <style>
 
-            .contenido {
-                float: left;
-                width: 100px;
-                height: 50px;
-                margin: 10px;
-                border: 3px solid #73AD21;
-            }  
+            FORM{
+                border-radius: 5px;
+                background-image: url("blue.jpg");
+                padding: 5px;             
+                float:left;
+                margin:5px;
+                width: 300px; 
+                height:600px;
+                border: 3px solid black
+            }
+
+            input[type=text], select {
+                width: 150px;
+                padding: 5px 5px;
+                margin: 3px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            input[type=button] {
+                width: 120px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 5px 5px;
+                margin: 5px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
 
         </style>
     </head>
@@ -28,8 +52,6 @@ and open the template in the editor.
         <input id="btn" type="button" value="Borrar formulario" onclick="borrar_formulario()">
 
         <div id="contenido"></div>
-       
-        
         <script type="text/javascript" src="formulario.js"></script>
     </body>
 </html>

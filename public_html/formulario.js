@@ -18,10 +18,7 @@ function genera_formulario() {
     formulario.id = nombreForm.value;
     formulario.method = 'POST';
 
-  
-    formulario.style.width = "400px";
-    formulario.style.height = "400px";
-    formulario.style.background = "red";
+
     
     var divBotones = document.createElement('div'); 
     divBotones.id = 'divbtn';
