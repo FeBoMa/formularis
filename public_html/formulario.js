@@ -19,19 +19,73 @@ function genera_formulario() {
     formulario.method = 'POST';
 
     var divBotones = document.createElement('div');
-    formulario.style.width = "400px";
-
-    var divBotones = document.createElement('div');
     divBotones.id = 'divbtn';
 
     var divInputs = document.createElement('div');
     divInputs.id = 'divInputs';
+
+    var tabDivInputs = document.createElement("TABLE");
+    tabDivInputs.setAttribute("id", "tabDivInputs");
+    divInputs.appendChild(tabDivInputs);
+
+    var trTabDivInp = document.createElement("TR");
+    trTabDivInp.setAttribute("id", "trTabDivInp");
+    tabDivInputs.appendChild(trTabDivInp);
+
+    var listSelect = document.createElement("SELECT");
+    listSelect.setAttribute("id", "listSelect");
+
+    var lpTextVal = document.createElement("option");
+    lpTextVal.setAttribute("value", "text");
+    var lpTextTxt = document.createTextNode("text");
+    lpTextVal.appendChild(lpTextTxt);
+    listSelect.appendChild(lpTextVal);
+
+    var lpPassVal = document.createElement("option");
+    lpPassVal.setAttribute("value", "password");
+    var lpPassTxt = document.createTextNode("password");
+    lpPassVal.appendChild(lpPassTxt);
+    listSelect.appendChild(lpPassVal);
+
+    var lpDataVal = document.createElement("option");
+    lpDataVal.setAttribute("value", "data");
+    var lpDataTxt = document.createTextNode("data");
+    lpDataVal.appendChild(lpDataTxt);
+    listSelect.appendChild(lpDataVal);
+
+    var lpEmailVal = document.createElement("option");
+    lpEmailVal.setAttribute("value", "email");
+    var lpEmailTxt = document.createTextNode("email");
+    lpEmailVal.appendChild(lpEmailTxt);
+    listSelect.appendChild(lpEmailVal);
+
+    var lpRangeVal = document.createElement("option");
+    lpRangeVal.setAttribute("value", "range");
+    var lpRangeTxt = document.createTextNode("range");
+    lpRangeVal.appendChild(lpRangeTxt);
+    listSelect.appendChild(lpRangeVal);
+
+    var lpFileVal = document.createElement("option");
+    lpFileVal.setAttribute("value", "file");
+    var lpFileTxt = document.createTextNode("file");
+    lpFileVal.appendChild(lpFileTxt);
+    listSelect.appendChild(lpFileVal);
+
+
+    var tdTabInputType = document.createElement("TD");
+    tdTabInputType.appendChild(listSelect);
+    trTabDivInp.appendChild(tdTabInputType);
 
     var btnInput = document.createElement('INPUT');
     btnInput.type = 'button';
     btnInput.name = 'añadirInput';
     btnInput.id = 'input';
     btnInput.value = "Añadir Input";
+
+    var tdTabInput = document.createElement("TD");
+    tdTabInput.appendChild(btnInput);
+    trTabDivInp.appendChild(tdTabInput);
+
 
     var tabInputs = document.createElement("TABLE");
     tabInputs.setAttribute("id", "tabInputs");
@@ -43,7 +97,7 @@ function genera_formulario() {
         tabInputs.appendChild(trTabInp);
 
         var etiquetaInput = document.createElement('INPUT');
-        etiquetaInput.type = 'TEXT';
+        etiquetaInput.type = listSelect.value;
 
         var tdTabInput = document.createElement("TD");
         tdTabInput.appendChild(etiquetaInput);
@@ -61,7 +115,7 @@ function genera_formulario() {
 
 
         btnEdit.onclick = function () {
-            
+            etiquetaInput.type = listSelect.value;
         }
 
         var btnDel = document.createElement('INPUT');
@@ -81,7 +135,7 @@ function genera_formulario() {
     }
 
 
-    divBotones.appendChild(btnInput);
+    divBotones.appendChild(tabDivInputs);
     formulario.appendChild(divBotones);
     formulario.appendChild(divInputs);
     contenido.appendChild(formulario);
