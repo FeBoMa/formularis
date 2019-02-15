@@ -10,6 +10,7 @@ var nombreForm = document.getElementById("nombreForm");
 var contenido = document.getElementById("contenido");
 
 
+
 function genera_formulario() {
 
     var idFormActual=document.getElementById("nombreForm").value;
@@ -17,10 +18,17 @@ function genera_formulario() {
     formulario.id = nombreForm.value;
     formulario.method = 'POST';
 
-    formulario.setAttribute("border", "1");
+  
     formulario.style.width = "400px";
     formulario.style.height = "400px";
     formulario.style.background = "red";
+    
+    var divBotones = document.createElement('div'); 
+    divBotones.id = 'divbtn';
+    
+     var divInputs = document.createElement('div'); 
+    divInputs.id = 'divInputs';
+    
 
     var btnInput = document.createElement('INPUT');
 
@@ -37,12 +45,13 @@ function genera_formulario() {
         etiquetaInput.type = 'TEXT';
         
         var item = document.getElementById(idFormActual);
-        item.appendChild(etiquetaInput);
+        divInputs.appendChild(etiquetaInput);
     }
 
 
-
-    formulario.appendChild(btnInput);
+    divBotones.appendChild(btnInput);
+    formulario.appendChild(divBotones);
+    formulario.appendChild(divInputs);
     contenido.appendChild(formulario);
     numForm++;
 }
@@ -54,16 +63,3 @@ function borrar_formulario() {
     var item = document.getElementById(document.getElementById("nombreForm").value);
     contenido.removeChild(item);
 }
-
-function anadir_input() {
-
-    var my_tb = document.createElement('INPUT');
-    my_tb.type = 'TEXT';
-    my_tb.name = 'myInput';
-    my_tb.id = numInput;
-    numInput++;
-
-    var item = document.getElementById(document.getElementById("nombreForm").value);
-    item.appendChild(my_tb);
-}
-   
