@@ -13,36 +13,71 @@ var contenido = document.getElementById("contenido");
 
 function genera_formulario() {
 
-    var idFormActual=document.getElementById("nombreForm").value;
+    //var idFormActual = document.getElementById("nombreForm").value;
     var formulario = document.createElement('FORM');
     formulario.id = nombreForm.value;
     formulario.method = 'POST';
 
+    var divBotones = document.createElement('div');
+    formulario.style.width = "400px";
 
-    
-    var divBotones = document.createElement('div'); 
+    var divBotones = document.createElement('div');
     divBotones.id = 'divbtn';
-    
-     var divInputs = document.createElement('div'); 
+
+    var divInputs = document.createElement('div');
     divInputs.id = 'divInputs';
-    
 
     var btnInput = document.createElement('INPUT');
-
     btnInput.type = 'button';
     btnInput.name = 'añadirInput';
     btnInput.id = 'input';
-
     btnInput.value = "Añadir Input";
 
-    btnInput.onclick = function (e) {
-        
-       
+    var tabInputs = document.createElement("TABLE");
+    tabInputs.setAttribute("id", "tabInputs");
+    divInputs.appendChild(tabInputs);
+
+    btnInput.onclick = function () {
+        var trTabInp = document.createElement("TR");
+        trTabInp.setAttribute("id", "trInput");
+        tabInputs.appendChild(trTabInp);
+
         var etiquetaInput = document.createElement('INPUT');
         etiquetaInput.type = 'TEXT';
-        
-        var item = document.getElementById(idFormActual);
-        divInputs.appendChild(etiquetaInput);
+
+        var tdTabInput = document.createElement("TD");
+        tdTabInput.appendChild(etiquetaInput);
+        trTabInp.appendChild(tdTabInput);
+
+        var btnEdit = document.createElement('INPUT');
+        btnEdit.type = 'button';
+        btnEdit.name = 'edit';
+        btnEdit.id = 'edit';
+        btnEdit.value = "Edit";
+
+        var tdTabBtnEdit = document.createElement("TD");
+        tdTabBtnEdit.appendChild(btnEdit);
+        trTabInp.appendChild(tdTabBtnEdit);
+
+
+        btnEdit.onclick = function () {
+            
+        }
+
+        var btnDel = document.createElement('INPUT');
+        btnDel.type = 'button';
+        btnDel.name = 'del';
+        btnDel.id = 'del';
+        btnDel.value = "Eliminar";
+
+        var tdTabBtnDel = document.createElement("TD");
+        tdTabBtnDel.appendChild(btnDel);
+        trTabInp.appendChild(tdTabBtnDel);
+
+
+        btnDel.onclick = function () {
+            tabInputs.removeChild(trTabInp);
+        }
     }
 
 
@@ -50,7 +85,6 @@ function genera_formulario() {
     formulario.appendChild(divBotones);
     formulario.appendChild(divInputs);
     contenido.appendChild(formulario);
-    numForm++;
 }
 
 function borrar_formulario() {
