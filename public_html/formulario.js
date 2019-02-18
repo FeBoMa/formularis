@@ -10,19 +10,20 @@ var nombreForm = document.getElementById("nombreForm");
 var contenido = document.getElementById("contenido");
 
 
-
 function genera_formulario() {
 
-    //var idFormActual = document.getElementById("nombreForm").value;
+    //DIV-------------------------------------------------------------------------
     var formulario = document.createElement('FORM');
     formulario.id = nombreForm.value;
     formulario.method = 'POST';
 
-    var divBotones = document.createElement('div');
-    divBotones.id = 'divbtn';
-
     var divInputs = document.createElement('div');
     divInputs.id = 'divInputs';
+
+    var divRadioButton = document.createElement('div');
+    divRadioButton.id = 'divRadioButton';
+
+   //INPUTS---------------------------------------------------------------
 
     var tabDivInputs = document.createElement("TABLE");
     tabDivInputs.setAttribute("id", "tabDivInputs");
@@ -32,6 +33,7 @@ function genera_formulario() {
     trTabDivInp.setAttribute("id", "trTabDivInp");
     tabDivInputs.appendChild(trTabDivInp);
 
+  //SELECCCION INPUT
     var listSelect = document.createElement("SELECT");
     listSelect.setAttribute("id", "listSelect");
 
@@ -76,6 +78,7 @@ function genera_formulario() {
     tdTabInputType.appendChild(listSelect);
     trTabDivInp.appendChild(tdTabInputType);
 
+ // BOTÓN AÑADIR INPUT
     var btnInput = document.createElement('INPUT');
     btnInput.type = 'button';
     btnInput.name = 'añadirInput';
@@ -87,14 +90,12 @@ function genera_formulario() {
     trTabDivInp.appendChild(tdTabInput);
 
 
-    var tabInputs = document.createElement("TABLE");
-    tabInputs.setAttribute("id", "tabInputs");
-    divInputs.appendChild(tabInputs);
+// ONCLICK INPUT
 
     btnInput.onclick = function () {
         var trTabInp = document.createElement("TR");
         trTabInp.setAttribute("id", "trInput");
-        tabInputs.appendChild(trTabInp);
+        tabDivInputs.appendChild(trTabInp);
 
         var etiquetaInput = document.createElement('INPUT');
         etiquetaInput.type = listSelect.value;
@@ -130,15 +131,102 @@ function genera_formulario() {
 
 
         btnDel.onclick = function () {
-            tabInputs.removeChild(trTabInp);
+            tabDivInputs.removeChild(trTabInp);
         }
     }
 
+    //RADIO BUTTON-------------------------------------------------------------
+    var tabDivRB = document.createElement("TABLE");
+    tabDivRB.setAttribute("id", "tabDivRB");
+    divRadioButton.appendChild(tabDivRB);
 
-    divBotones.appendChild(tabDivInputs);
-    formulario.appendChild(divBotones);
+
+    var trTabDivRB = document.createElement("TR");
+    trTabDivRB.setAttribute("id", "trTabDivRB");
+    tabDivRB.appendChild(trTabDivRB);
+
+    var txtRadio = document.createElement('INPUT');
+    txtRadio.type = 'text';
+    txtRadio.id = 'txtRadio';
+
+
+    var tdTabtxtRB = document.createElement("TD");
+    tdTabtxtRB.appendChild(txtRadio);
+    trTabDivRB.appendChild(tdTabtxtRB);
+
+    var btnRadio = document.createElement('INPUT');
+    btnRadio.type = 'button';
+    btnRadio.name = 'añadirRadio';
+    btnRadio.id = 'inputRadio';
+    btnRadio.value = "Añadir Radio";
+
+    var tdRadio = document.createElement("TD");
+    tdRadio.appendChild(btnRadio);
+    trTabDivRB.appendChild(tdRadio);
+    
+  // ONCLICK RADIO
+
+    btnRadio.onclick = function () {
+        
+        var trTabDivRB = document.createElement("TR");
+        trTabDivRB.setAttribute("id", "trInput");
+        tabDivRB.appendChild(trTabDivRB);
+
+       var radioCreate = document.createElement('INPUT');
+       radioCreate.type='radio';
+       radioCreate.id='radio1';
+       radioCreate.value=txtRadio.value;
+       radioCreate.textContent=txtRadio.value;
+       radioCreate.name='grupo';
+       
+       var label = document.createElement('LABEL');
+       label.value='ggg';
+       
+ 
+        var tdRadio= document.createElement("TD");
+        tdRadio.id='idRadio';
+        tdRadio.appendChild(radioCreate);
+        trTabDivRB.appendChild(tdRadio);
+        
+
+        var btnEdit = document.createElement('INPUT');
+        btnEdit.type = 'button';
+        btnEdit.name = 'edit';
+        btnEdit.id = 'edit';
+        btnEdit.value = "Edit";
+
+        var tdTabBtnEdit = document.createElement("TD");
+        tdTabBtnEdit.appendChild(btnEdit);
+        trTabDivRB.appendChild(tdTabBtnEdit);
+
+
+        btnEdit.onclick = function () {
+            radioCreate.value = txtRadio.value;
+            radioCreate.textContent=txtRadio.value;
+        }
+
+        var btnDel = document.createElement('INPUT');
+        btnDel.type = 'button';
+        btnDel.name = 'del';
+        btnDel.id = 'del';
+        btnDel.value = "Eliminar";
+
+        var tdTabBtnDel = document.createElement("TD");
+        tdTabBtnDel.appendChild(btnDel);
+        trTabDivRB.appendChild(tdTabBtnDel);
+
+
+        btnDel.onclick = function () {
+            tabDivInputs.removeChild(trTabDivRB);
+        }
+    }
+
+//
+    divInputs.appendChild(tabDivInputs);
     formulario.appendChild(divInputs);
     contenido.appendChild(formulario);
+    divRadioButton.appendChild(tabDivRB);
+    formulario.appendChild(divRadioButton);
 }
 
 function borrar_formulario() {
@@ -148,3 +236,4 @@ function borrar_formulario() {
     var item = document.getElementById(document.getElementById("nombreForm").value);
     contenido.removeChild(item);
 }
+
