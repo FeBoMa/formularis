@@ -23,7 +23,7 @@ function genera_formulario() {
     var divRadioButton = document.createElement('div');
     divRadioButton.id = 'divRadioButton';
 
-   //INPUTS---------------------------------------------------------------
+    //INPUTS---------------------------------------------------------------
 
     var tabDivInputs = document.createElement("TABLE");
     tabDivInputs.setAttribute("id", "tabDivInputs");
@@ -33,7 +33,7 @@ function genera_formulario() {
     trTabDivInp.setAttribute("id", "trTabDivInp");
     tabDivInputs.appendChild(trTabDivInp);
 
-  //SELECCCION INPUT
+    //SELECCCION INPUT
     var listSelect = document.createElement("SELECT");
     listSelect.setAttribute("id", "listSelect");
 
@@ -78,7 +78,7 @@ function genera_formulario() {
     tdTabInputType.appendChild(listSelect);
     trTabDivInp.appendChild(tdTabInputType);
 
- // BOTÓN AÑADIR INPUT
+    // BOTÓN AÑADIR INPUT
     var btnInput = document.createElement('INPUT');
     btnInput.type = 'button';
     btnInput.name = 'añadirInput';
@@ -163,31 +163,31 @@ function genera_formulario() {
     var tdRadio = document.createElement("TD");
     tdRadio.appendChild(btnRadio);
     trTabDivRB.appendChild(tdRadio);
-    
-  // ONCLICK RADIO
+
+    // ONCLICK RADIO
 
     btnRadio.onclick = function () {
-        
+
         var trTabDivRB = document.createElement("TR");
         trTabDivRB.setAttribute("id", "trInput");
         tabDivRB.appendChild(trTabDivRB);
 
-       var radioCreate = document.createElement('INPUT');
-       radioCreate.type='radio';
-       radioCreate.id='radio1';
-       radioCreate.value=txtRadio.value;
-       radioCreate.textContent=txtRadio.value;
-       radioCreate.name='grupo';
-       
-       var label = document.createElement('LABEL');
-       label.value='ggg';
-       
- 
-        var tdRadio= document.createElement("TD");
-        tdRadio.id='idRadio';
-        tdRadio.appendChild(radioCreate);
+        var radioCreate = document.createElement('INPUT');
+        radioCreate.type = 'radio';
+        radioCreate.id = 'radio';
+        radioCreate.value = txtRadio.value;
+        radioCreate.textContent = txtRadio.value;
+        radioCreate.name = 'grupo';
+
+        var label = document.createElement('LABEL');
+        label.textContent = txtRadio.value;
+
+        var tdRadio = document.createElement("TD");
+        tdRadio.id = 'idRadio';
+        tdRadio.appendChild(label);
         trTabDivRB.appendChild(tdRadio);
-        
+
+        tdRadio.insertBefore(radioCreate, label);
 
         var btnEdit = document.createElement('INPUT');
         btnEdit.type = 'button';
@@ -202,7 +202,7 @@ function genera_formulario() {
 
         btnEdit.onclick = function () {
             radioCreate.value = txtRadio.value;
-            radioCreate.textContent=txtRadio.value;
+            label.textContent = txtRadio.value;
         }
 
         var btnDel = document.createElement('INPUT');
@@ -217,7 +217,7 @@ function genera_formulario() {
 
 
         btnDel.onclick = function () {
-            tabDivInputs.removeChild(trTabDivRB);
+            tabDivRB.removeChild(trTabDivRB);
         }
     }
 
