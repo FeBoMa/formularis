@@ -30,6 +30,10 @@ function genera_formulario() {
     var divList = document.createElement('div');
     divRadioCH.id = 'divList';
 
+    var divListMult = document.createElement('div');
+    divRadioCH.id = 'divListMult';
+
+
     //INPUTS---------------------------------------------------------------
 
     var tabDivInputs = document.createElement("TABLE");
@@ -419,6 +423,114 @@ function genera_formulario() {
         }
     }
 
+
+    //------------------------------------------------------
+
+    var tabDivListMult = document.createElement("TABLE");
+    tabDivListMult.setAttribute("id", "tabDivListMult");
+    divListMult.appendChild(tabDivListMult);
+
+    var trtabDivListMult = document.createElement("TR");
+    trtabDivListMult.setAttribute("id", "trtabDivListMult");
+    tabDivListMult.appendChild(trtabDivListMult);
+
+    var txtListMult = document.createElement('INPUT');
+    txtListMult.type = 'text';
+    txtListMult.id = 'txtRadio';
+
+    var tdtabDivListMult = document.createElement("TD");
+    tdtabDivListMult.appendChild(txtListMult);
+    trtabDivListMult.appendChild(tdtabDivListMult);
+
+
+    // BOTÓN AÑADIR INPUT
+    var btnListMult = document.createElement('INPUT');
+    btnListMult.type = 'button';
+    btnListMult.name = 'btnListMult';
+    btnListMult.id = 'btnListMult';
+    btnListMult.value = "Añadir Lista Multiple";
+
+    var tdTabListMult = document.createElement("TD");
+    tdTabListMult.appendChild(btnListMult);
+    trtabDivListMult.appendChild(tdTabListMult);
+
+    btnListMult.onclick = function () {
+
+        var trtabDivListMult = document.createElement("TR");
+        trtabDivListMult.setAttribute("id", "trInputMult");
+        tabDivListMult.appendChild(trtabDivListMult);
+
+
+        var listAddMult = document.createElement("SELECT");
+        listAddMult.setAttribute("id", "listAddMult");
+        listAddMult.multiple = true;
+
+        var listOPMult = document.createElement("option");
+        listOPMult.setAttribute("value", txtListMult.value);
+        var lpTextTxtMult = document.createTextNode(txtListMult.value);
+        listOPMult.appendChild(lpTextTxtMult);
+        listAddMult.appendChild(listOPMult);
+
+
+        var tdListMult = document.createElement("TD");
+        tdListMult.id = 'tdListMult';
+        tdListMult.appendChild(listAddMult);
+        trtabDivListMult.appendChild(tdListMult);
+
+
+        var btnEditMult = document.createElement('INPUT');
+        btnEditMult.type = 'button';
+        btnEditMult.name = 'edit';
+        btnEditMult.id = 'edit';
+        btnEditMult.value = "Añadir Opción";
+
+        var tdListBtnEdMult = document.createElement("TD");
+        tdListBtnEdMult.appendChild(btnEditMult);
+        trtabDivListMult.appendChild(tdListBtnEdMult);
+
+
+        btnEditMult.onclick = function () {
+            var listOPMult = document.createElement("option");
+            listOPMult.setAttribute("value", txtListMult.value);
+            var lpTextTxtMult = document.createTextNode(txtListMult.value);
+            listOPMult.appendChild(lpTextTxtMult);
+            listAddMult.appendChild(listOPMult);
+        }
+
+
+        var btnDelOpMult = document.createElement('INPUT');
+        btnDelOpMult.type = 'button';
+        btnDelOpMult.name = 'btnDelOpMult';
+        btnDelOpMult.id = 'btnDelOpMult';
+        btnDelOpMult.value = "Eliminar Opción";
+
+        var tdTabBtnDelOpMult = document.createElement("TD");
+        tdTabBtnDelOpMult.appendChild(btnDelOpMult);
+        trtabDivListMult.appendChild(tdTabBtnDelOpMult);
+
+
+        btnDelOpMult.onclick = function () {
+            listAddMult.remove(listAddMult.selectedIndex);
+        }
+
+        var btnDelMult = document.createElement('INPUT');
+        btnDelMult.type = 'button';
+        btnDelMult.name = 'btnDelMult';
+        btnDelMult.id = 'btnDelMult';
+        btnDelMult.value = "Eliminar";
+
+        var tdTabBtnDelMult = document.createElement("TD");
+        tdTabBtnDelMult.appendChild(btnDelMult);
+        trtabDivListMult.appendChild(tdTabBtnDelMult);
+
+
+        btnDelMult.onclick = function () {
+            tabDivListMult.removeChild(trtabDivListMult);
+        }
+    }
+
+
+
 //------------------------------------------------------------------------------
 //Añadimos el formulario al arbol como hijo de contenido
     contenido.appendChild(formulario);
@@ -433,7 +545,10 @@ function genera_formulario() {
     divRadioCH.appendChild(tabDivCH);
 //
     formulario.appendChild(divList);
-    divRadioCH.appendChild(tabDivList);
+    divList.appendChild(tabDivList);
+//
+    formulario.appendChild(divListMult);
+    divListMult.appendChild(tabDivListMult);
 
 }
 
