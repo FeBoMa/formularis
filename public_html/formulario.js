@@ -105,7 +105,7 @@ function genera_formulario() {
     btnInput.name = 'añadirInput';
     btnInput.id = 'input';
     btnInput.value = "Añadir Input";
-   //Metemos nuestro TD como hijo de TR. 664 86 69 93
+   //Metemos nuestro TD como hijo de TR.
     var tdTabInput = document.createElement("TD");
     tdTabInput.appendChild(btnInput);
     trTabDivInp.appendChild(tdTabInput);
