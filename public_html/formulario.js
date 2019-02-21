@@ -8,6 +8,7 @@ var numInput = 0;
 
 var nombreForm = document.getElementById("nombreForm");
 var contenido = document.getElementById("contenido");
+var btndel = document.getElementById("btndel");
 
 
 function genera_formulario() {
@@ -25,6 +26,9 @@ function genera_formulario() {
 
     var divRadioCH = document.createElement('div');
     divRadioCH.id = 'divRadioCH';
+
+    var divList = document.createElement('div');
+    divRadioCH.id = 'divList';
 
     //INPUTS---------------------------------------------------------------
 
@@ -139,7 +143,7 @@ function genera_formulario() {
     }
 
     //RADIO BUTTON-------------------------------------------------------------
-   
+
     var tabDivRB = document.createElement("TABLE");
     tabDivRB.setAttribute("id", "tabDivRB");
     divRadioButton.appendChild(tabDivRB);
@@ -309,31 +313,134 @@ function genera_formulario() {
         }
     }
 
+//------------------------------------------------------------------------------
+
+    var tabDivList = document.createElement("TABLE");
+    tabDivList.setAttribute("id", "tabDivList");
+    divList.appendChild(tabDivList);
+
+    var trtabDivList = document.createElement("TR");
+    trtabDivList.setAttribute("id", "trtabDivList");
+    tabDivList.appendChild(trtabDivList);
+
+    var txtList = document.createElement('INPUT');
+    txtList.type = 'text';
+    txtList.id = 'txtRadio';
+
+    var tdtabDivList = document.createElement("TD");
+    tdtabDivList.appendChild(txtList);
+    trtabDivList.appendChild(tdtabDivList);
+
+
+    // BOTÓN AÑADIR INPUT
+    var btnList = document.createElement('INPUT');
+    btnList.type = 'button';
+    btnList.name = 'btnList';
+    btnList.id = 'btnList';
+    btnList.value = "Añadir Lista";
+
+    var tdTabList = document.createElement("TD");
+    tdTabList.appendChild(btnList);
+    trtabDivList.appendChild(tdTabList);
+
+    btnList.onclick = function () {
+
+        var trtabDivList = document.createElement("TR");
+        trtabDivList.setAttribute("id", "trInput");
+        tabDivList.appendChild(trtabDivList);
+
+
+        var listAdd = document.createElement("SELECT");
+        listAdd.setAttribute("id", "listAdd");
+
+        var listOP = document.createElement("option");
+        listOP.setAttribute("value", txtList.value);
+        var lpTextTxt = document.createTextNode(txtList.value);
+        listOP.appendChild(lpTextTxt);
+        listAdd.appendChild(listOP);
+
+
+        var tdList = document.createElement("TD");
+        tdList.id = 'tdList';
+        tdList.appendChild(listAdd);
+        trtabDivList.appendChild(tdList);
+
+
+        var btnEdit = document.createElement('INPUT');
+        btnEdit.type = 'button';
+        btnEdit.name = 'edit';
+        btnEdit.id = 'edit';
+        btnEdit.value = "Añadir Opción";
+
+        var tdListBtnEd = document.createElement("TD");
+        tdListBtnEd.appendChild(btnEdit);
+        trtabDivList.appendChild(tdListBtnEd);
+
+
+        btnEdit.onclick = function () {
+            var listOP = document.createElement("option");
+            listOP.setAttribute("value", txtList.value);
+            var lpTextTxt = document.createTextNode(txtList.value);
+            listOP.appendChild(lpTextTxt);
+            listAdd.appendChild(listOP);
+        }
+
+
+        var btnDelOp = document.createElement('INPUT');
+        btnDelOp.type = 'button';
+        btnDelOp.name = 'delOp';
+        btnDelOp.id = 'delOp';
+        btnDelOp.value = "Eliminar Opción";
+
+        var tdTabBtnDelOp = document.createElement("TD");
+        tdTabBtnDelOp.appendChild(btnDelOp);
+        trtabDivList.appendChild(tdTabBtnDelOp);
+
+
+        btnDelOp.onclick = function () {
+            listAdd.remove(listAdd.selectedIndex);
+        }
 
 
 
+        var btnDel = document.createElement('INPUT');
+        btnDel.type = 'button';
+        btnDel.name = 'del';
+        btnDel.id = 'del';
+        btnDel.value = "Eliminar";
+
+        var tdTabBtnDel = document.createElement("TD");
+        tdTabBtnDel.appendChild(btnDel);
+        trtabDivList.appendChild(tdTabBtnDel);
 
 
-    //Añadimos el formulario al arbol como hijo de contenido
-    contenido.appendChild(formulario);
-    //Añadimos el div y la tabla(tabDivInputs) de los inputs al formulario
-    formulario.appendChild(divInputs);
-    divInputs.appendChild(tabDivInputs);
-    //Añadimos el div y la tabla(tabDivInputs) de los radiobutton al formulario
-    formulario.appendChild(divRadioButton);
-    divRadioButton.appendChild(tabDivRB);
-    //Añadimos el div y la tabla(tabDivInputs) de los checkbox al formulario
-    formulario.appendChild(divRadioCH);
-    divRadioCH.appendChild(tabDivCH);
-
-
-
-    function borrar_formulario() {
-
-        //alert(document.getElementById("nombreForm").value);
-        //document.getElementsById(document.getElementById("nombreForm").value).remove();
-        var item = document.getElementById(document.getElementById("nombreForm").value);
-        contenido.removeChild(item);
+        btnDel.onclick = function () {
+            tabDivList.removeChild(trtabDivList);
+        }
     }
 
+//------------------------------------------------------------------------------
+//Añadimos el formulario al arbol como hijo de contenido
+    contenido.appendChild(formulario);
+//Añadimos el div y la tabla(tabDivInputs) de los inputs al formulario
+    formulario.appendChild(divInputs);
+    divInputs.appendChild(tabDivInputs);
+//Añadimos el div y la tabla(tabDivInputs) de los radiobutton al formulario
+    formulario.appendChild(divRadioButton);
+    divRadioButton.appendChild(tabDivRB);
+//Añadimos el div y la tabla(tabDivInputs) de los checkbox al formulario
+    formulario.appendChild(divRadioCH);
+    divRadioCH.appendChild(tabDivCH);
+//
+    formulario.appendChild(divList);
+    divRadioCH.appendChild(tabDivList);
+
+}
+
+
+function borrar_formulario() {
+    //alert(document.getElementById("nombreForm").value);
+    //document.getElementsById(document.getElementById("nombreForm").value).remove();
+    var item = document.getElementById(document.getElementById("nombreForm").value);
+    contenido.removeChild(item);
 }
