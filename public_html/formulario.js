@@ -10,10 +10,17 @@ var nombreForm = document.getElementById("nombreForm");
 var contenido = document.getElementById("contenido");
 var btndel = document.getElementById("btndel");
 
+/* SISTEMA DE FUNCIONAMIENTO DE LOS INPUT QUE INTRODUCEN LOS VALORES DE LOS DIFERENTES CAMPOS
+ * 
+ * 
+ */
+
 
 function genera_formulario() {
 
-    //DIV-------------------------------------------------------------------------
+    //DIV-----------------------------------------------------------------------
+    //Generamos div que contendran los diferentes apartados
+    
     var formulario = document.createElement('FORM');
     formulario.id = nombreForm.value;
     formulario.method = 'POST';
@@ -35,6 +42,9 @@ function genera_formulario() {
 
 
     //INPUTS---------------------------------------------------------------
+    
+    //Generamos una tabla que contendran un TR inicial para el campo de añadir texto y los botones de añadir y eliminar en sus respectivos TD.
+    //Generamos los elementos de los tipo de input que estarán en una lista de selección para finalmente crearse con el botón de añadir.
 
     var tabDivInputs = document.createElement("TABLE");
     tabDivInputs.setAttribute("id", "tabDivInputs");
@@ -47,7 +57,7 @@ function genera_formulario() {
     //SELECCCION INPUT
     var listSelect = document.createElement("SELECT");
     listSelect.setAttribute("id", "listSelect");
-
+   //vamos introduciendo nuestras opciones en nuestra lista
     var lpTextVal = document.createElement("option");
     lpTextVal.setAttribute("value", "text");
     var lpTextTxt = document.createTextNode("text");
@@ -95,13 +105,15 @@ function genera_formulario() {
     btnInput.name = 'añadirInput';
     btnInput.id = 'input';
     btnInput.value = "Añadir Input";
-
+   //Metemos nuestro TD como hijo de TR. 664 86 69 93
     var tdTabInput = document.createElement("TD");
     tdTabInput.appendChild(btnInput);
     trTabDivInp.appendChild(tdTabInput);
 
 
 // ONCLICK INPUT
+
+//Generamos un TR por cada input añadido y una vez más creamos TD para introducir el input y los botones de añadir y modificar.
 
     btnInput.onclick = function () {
         var trTabInp = document.createElement("TR");
@@ -176,7 +188,8 @@ function genera_formulario() {
     trTabDivRB.appendChild(tdRadio);
 
     // ONCLICK RADIO
-
+    
+    //Generamos un TR por cada input añadido y una vez más creamos TD para introducir el radioButton y los botones de añadir y modificar.
     btnRadio.onclick = function () {
 
         var trTabDivRB = document.createElement("TR");
@@ -190,6 +203,7 @@ function genera_formulario() {
         radioCreate.textContent = txtRadio.value;
         radioCreate.name = 'grupo';
 
+        //Creamos un label que contendrá el valor de texto de txtRadio , este se introduce en el tdRadio.
         var label = document.createElement('LABEL');
         label.textContent = txtRadio.value;
 
@@ -261,7 +275,8 @@ function genera_formulario() {
     trTabDivCH.appendChild(btnCheck);
 
     //ONCLICK CHECKBOX
-
+    
+    //Generamos un TR por cada input añadido y una vez más creamos TD para introducir el checkBox y los botones de añadir y modificar.
     btnCheck.onclick = function () {
 
         var trTabDivCH = document.createElement("TR");
@@ -274,7 +289,8 @@ function genera_formulario() {
         checkCreate.value = txtCheck.value;
         checkCreate.textContent = txtCheck.value;
         checkCreate.name = 'grupo';
-
+        
+       //Creamos un label que contendrá el texto que describe el checkbox , el contenido sera el valor de nuestro input txtCheck para ser introducido en tdCheck.
         var label = document.createElement('LABEL');
         label.textContent = txtCheck.value;
 
@@ -317,7 +333,7 @@ function genera_formulario() {
         }
     }
 
-//------------------------------------------------------------------------------
+//LISTA SELECCIÓN SIMPLE--------------------------------------------------------
 
     var tabDivList = document.createElement("TABLE");
     tabDivList.setAttribute("id", "tabDivList");
@@ -336,7 +352,7 @@ function genera_formulario() {
     trtabDivList.appendChild(tdtabDivList);
 
 
-    // BOTÓN AÑADIR INPUT
+  // BOTÓN AÑADIR INPUT
     var btnList = document.createElement('INPUT');
     btnList.type = 'button';
     btnList.name = 'btnList';
@@ -346,6 +362,10 @@ function genera_formulario() {
     var tdTabList = document.createElement("TD");
     tdTabList.appendChild(btnList);
     trtabDivList.appendChild(tdTabList);
+    
+  //ON CLICK Lista Simple
+  
+  //Generamos un TR por cada input añadido y una vez más creamos TD para introducir la lista y los botones de añadir y modificar.
 
     btnList.onclick = function () {
 
@@ -417,14 +437,14 @@ function genera_formulario() {
         tdTabBtnDel.appendChild(btnDel);
         trtabDivList.appendChild(tdTabBtnDel);
 
-
+      //Borramos el hijo
         btnDel.onclick = function () {
             tabDivList.removeChild(trtabDivList);
         }
     }
 
 
-    //------------------------------------------------------
+    //LISTA MULTIPLE------------------------------------------------------
 
     var tabDivListMult = document.createElement("TABLE");
     tabDivListMult.setAttribute("id", "tabDivListMult");
@@ -453,7 +473,10 @@ function genera_formulario() {
     var tdTabListMult = document.createElement("TD");
     tdTabListMult.appendChild(btnListMult);
     trtabDivListMult.appendChild(tdTabListMult);
-
+    
+  //ON CLICK LISTA MUILTIPLE
+  //
+  //Generamos un TR por cada input añadido y una vez más creamos TD para introducir el input y los botones de añadir y modificar.
     btnListMult.onclick = function () {
 
         var trtabDivListMult = document.createElement("TR");
@@ -543,10 +566,10 @@ function genera_formulario() {
 //Añadimos el div y la tabla(tabDivInputs) de los checkbox al formulario
     formulario.appendChild(divRadioCH);
     divRadioCH.appendChild(tabDivCH);
-//
+//Añadimos el div y la tabla(tabDivList) de los inputs al formulario
     formulario.appendChild(divList);
     divList.appendChild(tabDivList);
-//
+//Añadimos el div y la tabla(tabDivListMult) de los inputs al formulario
     formulario.appendChild(divListMult);
     divListMult.appendChild(tabDivListMult);
 
