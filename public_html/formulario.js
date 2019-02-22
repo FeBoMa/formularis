@@ -109,11 +109,11 @@ function genera_formulario() {
         lpPassVal.appendChild(lpPassTxt);
         listSelect.appendChild(lpPassVal);
 
-        var lpDataVal = document.createElement("option");
-        lpDataVal.setAttribute("value", "data");
-        var lpDataTxt = document.createTextNode("data");
-        lpDataVal.appendChild(lpDataTxt);
-        listSelect.appendChild(lpDataVal);
+        var lpDateVal = document.createElement("option");
+        lpDateVal.setAttribute("value", "date");
+        var lpDateTxt = document.createTextNode("date");
+        lpDateVal.appendChild(lpDateTxt);
+        listSelect.appendChild(lpDateVal);
 
         var lpEmailVal = document.createElement("option");
         lpEmailVal.setAttribute("value", "email");
